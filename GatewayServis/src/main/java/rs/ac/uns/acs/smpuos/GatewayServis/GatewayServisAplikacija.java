@@ -11,5 +11,4 @@ public class GatewayServisAplikacija {
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayServisAplikacija.class, args);
 	}
-	//test
 }

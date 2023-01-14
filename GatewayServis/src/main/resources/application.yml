@@ -16,24 +16,8 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: korisnik-servis
-          uri: http://korisnik-servis
+        - id: recommendation-service
+          uri: http://recommendation-service
           predicates:
-            - Path=/korisnik-servis/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: korisnik-servis-circuit-breaker
-                fallbackUri: forward:/korisnik-servis-circuit-breaker
-        - id: load-balancer-servis
-          uri: http://load-balancer-servis
-          predicates:
-            - Path=/load-balancer-servis/**
-        - id: studijski-program-servis
-          uri: http://studijski-program-servis
-          predicates:
-            - Path=/studijski-program-servis/**
-        - id: konkurs-servis
-          uri: http://konkurs-servis
-          predicates:
-            - Path=/konkurs-servis/**
+            - Path=/recommendation-service/**
+
