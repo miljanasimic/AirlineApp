@@ -24,3 +24,65 @@ hs_err_pid*
 
 .idea
 helpers
+
+.DS_STORE
+
+frontend/AirlineApp/dist/
+frontend/AirlineApp/bazel-out
+frontend/AirlineApp/integration/bazel/bazel-*
+*.log
+frontend/AirlineApp/node_modules/
+
+# CircleCI temporary file for cache key computation.
+# See `save_month_to_file` in `.circleci/config.yml`.
+month.txt
+
+# Include when developing application packages.
+frontend/AirlineApp/pubspec.lock
+frontend/AirlineApp/.c9
+frontend/AirlineApp/.idea/
+frontend/AirlineApp/.devcontainer/*
+frontend/AirlineApp/!.devcontainer/README.md
+frontend/AirlineApp/!.devcontainer/recommended-devcontainer.json
+frontend/AirlineApp/!.devcontainer/recommended-Dockerfile
+frontend/AirlineApp/.settings/
+frontend/AirlineApp/.vscode/launch.json
+frontend/AirlineApp/.vscode/settings.json
+frontend/AirlineApp/.vscode/tasks.json
+frontend/AirlineApp/*.swo
+frontend/AirlineApp/*.swp
+frontend/AirlineApp/modules/.settings
+frontend/AirlineApp/modules/.vscode
+frontend/AirlineApp/.vimrc
+frontend/AirlineApp/.nvimrc
+
+# Don't check in secret files
+frontend/AirlineApp/*secret.js
+
+# Ignore npm/yarn debug log
+frontend/AirlineApp/npm-debug.log
+frontend/AirlineApp/yarn-error.log
+
+# build-analytics
+frontend/AirlineApp/.build-analytics
+
+# rollup-test output
+frontend/AirlineApp/modules/rollup-test/dist/
+
+# User specific bazel settings
+frontend/AirlineApp/.bazelrc.user
+
+# User specific ng-dev settings
+frontend/AirlineApp/.ng-dev.user*
+
+frontend/AirlineApp/.notes.md
+frontend/AirlineApp/baseline.json
+
+# Ignore .history for the xyz.local-history VSCode extension
+frontend/AirlineApp/.history
+
+# Husky
+frontend/AirlineApp/.husky/_
+frontend/AirlineApp/aio/content/examples/.DS_Store
+
+

@@ -5,10 +5,10 @@ spring:
   application:
     name: recommendation-service
   neo4j:
-    uri: neo4j+s://d0da868e.databases.neo4j.io
+    uri: "neo4j+s://d0da868e.databases.neo4j.io"
     authentication:
-      username: neo4j
-      password: ipJtHvS4XRAErjTwvALUsVjRW9yNFAWeuh7zhJL0rGE
+      username: "neo4j"
+      password: "ipJtHvS4XRAErjTwvALUsVjRW9yNFAWeuh7zhJL0rGE"
 
 eureka:
   client:
