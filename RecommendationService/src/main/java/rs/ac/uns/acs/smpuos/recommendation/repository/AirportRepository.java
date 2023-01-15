@@ -2,17 +2,10 @@ package rs.ac.uns.acs.smpuos.recommendation.repository;
 
 import org.neo4j.driver.internal.value.ListValue;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
-import org.springframework.data.neo4j.repository.ReactiveNeo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
-import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
-import reactor.core.publisher.Mono;
 import rs.ac.uns.acs.smpuos.recommendation.model.Airport;
-import rs.ac.uns.acs.smpuos.recommendation.service.AirportService;
-
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
+
 
 public interface AirportRepository extends Neo4jRepository<Airport, String> {
 
