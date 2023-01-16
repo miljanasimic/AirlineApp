@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: User-service
+    name: users-service
   data:
     mongodb:
       uri: "mongodb+srv://mnm:Qu3PJIME3TRZt6Nt@cluster0.wnxgws7.mongodb.net/?retryWrites=true&w=majority"
