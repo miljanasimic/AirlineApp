@@ -20,4 +20,8 @@ spring:
           uri: http://recommendation-service
           predicates:
             - Path=/recommendation-service/**
+        - id: flights-service
+          uri: http://flights-service
+          predicates:
+            - Path=/flights-service/**
 
