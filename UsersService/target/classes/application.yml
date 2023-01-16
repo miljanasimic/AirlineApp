@@ -1,0 +1,19 @@
+server:
+  port: 9010
+
+spring:
+  application:
+    name: User-service
+  data:
+    mongodb:
+      uri: "mongodb+srv://mnm:Qu3PJIME3TRZt6Nt@cluster0.wnxgws7.mongodb.net/?retryWrites=true&w=majority"
+      database: UsersDatabase
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      healthcheck:
+        enabled: true
+  instance:
+    prefer-ip-address: true
