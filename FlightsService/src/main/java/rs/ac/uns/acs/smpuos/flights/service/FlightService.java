@@ -7,7 +7,10 @@ import rs.ac.uns.acs.smpuos.flights.model.Flight;
 import rs.ac.uns.acs.smpuos.flights.repository.FlightRepository;
 
 import java.time.ZonedDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class FlightService implements IFlightService{
@@ -33,9 +36,5 @@ public class FlightService implements IFlightService{
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public Boolean checkAvailability(Long flightId, Integer seatsRemainining) {;
-        return flightRepository.findSeatsRemaining(flightId, seatsRemainining);
     }
 }
