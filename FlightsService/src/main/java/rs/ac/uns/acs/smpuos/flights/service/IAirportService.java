@@ -1,6 +1,9 @@
 package rs.ac.uns.acs.smpuos.flights.service;
 
 import rs.ac.uns.acs.smpuos.flights.model.Airport;
+import rs.ac.uns.acs.smpuos.flights.model.Flight;
+
+import java.util.Date;
 import java.util.List;
 import java.time.LocalDateTime;
 
@@ -13,5 +16,4 @@ public interface IAirportService {
 
     List<LocalDateTime> getPossibleFlightsDates(String from, String to);
 
-    boolean checkAvailability(String)
 }

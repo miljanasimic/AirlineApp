@@ -4,6 +4,7 @@ import org.neo4j.driver.internal.value.DateTimeValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.acs.smpuos.flights.model.Airport;
+import rs.ac.uns.acs.smpuos.flights.model.Flight;
 import rs.ac.uns.acs.smpuos.flights.service.IAirportService;
 
 import java.time.LocalDateTime;
@@ -40,6 +41,13 @@ public class AirportController {
     public List<LocalDateTime> getFlightsDates(@RequestParam String srcAirportCode, @RequestParam String dstAirportCode){
         return airportService.getPossibleFlightsDates(srcAirportCode, dstAirportCode);
     }
+
+//    @GetMapping(value = "/oneWayFlightsByCriteria")
+//    public List<Flight> getOneWayFlightsBySearch(@RequestParam String srcAirportCode, @RequestParam String dstAirportCode,
+//                                           @RequestParam String date, @RequestParam Integer passengerNumber){
+//        return airportService.getOneWayFlightsByAirportsAndDate(srcAirportCode, dstAirportCode, date, passengerNumber);
+//    }
+
 
 
 }

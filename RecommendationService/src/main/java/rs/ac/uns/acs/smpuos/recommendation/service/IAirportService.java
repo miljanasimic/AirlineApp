@@ -1,6 +1,8 @@
 package rs.ac.uns.acs.smpuos.recommendation.service;
 
 import rs.ac.uns.acs.smpuos.recommendation.model.Airport;
+import rs.ac.uns.acs.smpuos.recommendation.model.Flight;
+
 import java.util.List;
 
 
