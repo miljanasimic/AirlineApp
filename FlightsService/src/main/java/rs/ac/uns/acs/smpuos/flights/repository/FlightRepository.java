@@ -17,4 +17,15 @@ public interface FlightRepository extends Neo4jRepository<Flight, Long> {
             "WHERE date(f.date)=date($flightDate) AND f.seatsRemaining>=$passengersNum\n" +
             "RETURN f as flight")
     List<RelationshipValue> findFlightsByCriteria(String srcAirportCode, String dstAirportCode, String flightDate, Integer passengersNum);
+
+    @Query("MATCH (a:Airport)\n" +
+            "WHERE a.code in $routes\n" +
+            "WITH collect(a) as airports\n" +
+            "UNWIND range(0, size($routes)-2) as index\n" +
+            "WITH airports[index] as a1, airports[index+1] as a2\n" +
+            "MATCH (a1)-[f1:FLIGHT]->(a2)\n" +
+            "WHERE date(f1.date)=date($flightDate) AND f1.seatsRemaining>=$passengersNum\n" +
+            "WITH f1, a1, a2\n" +
+            "RETURN [f1,a1.code,a2.code];")
+    List<ListValue> findRecommendedFlightsByCriteria(List<String> routes, String flightDate, Integer passengersNum);
 }

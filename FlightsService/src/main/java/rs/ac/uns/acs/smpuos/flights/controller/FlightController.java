@@ -25,4 +25,9 @@ public class FlightController {
                                                             @RequestParam String date, @RequestParam Integer passengerNumber){
         return flightService.getOneWayFlightsByAirportsAndDate(srcAirportCode, dstAirportCode, date, passengerNumber);
     }
+
+    @GetMapping(value = "/recommendedRoutesFlights")
+    public List<Flight> getFlightsByRoutes(@RequestParam List<String> routes, @RequestParam String date, @RequestParam Integer passengerNumber){
+        return flightService.findRecommendedFlightsByCriteria(routes, date, passengerNumber);
+    }
 }
