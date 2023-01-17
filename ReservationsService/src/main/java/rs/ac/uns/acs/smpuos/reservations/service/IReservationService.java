@@ -8,4 +8,5 @@ public interface IReservationService {
     void insert(Reservation reservation);
     Optional<Reservation> deleteById(String id);
     Optional<Reservation> findByPassengerId(String passengerId);
+    Optional<Reservation> findByFlightId(String flightID);
 }
