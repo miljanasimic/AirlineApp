@@ -1,20 +1,16 @@
 package rs.ac.uns.acs.smpuos.flights.service;
 
+import org.neo4j.driver.internal.value.RelationshipValue;
 import rs.ac.uns.acs.smpuos.flights.model.Airport;
 import rs.ac.uns.acs.smpuos.flights.model.Flight;
 
-import java.util.Date;
-import java.util.List;
+import java.lang.reflect.Field;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public interface IAirportService {
-
-    List<Airport> getAirportsInCountry(String country);
-    List<String> getAllCountries();
-
-    List<Airport> getDirectAirports(String fromAirport);
-
-    List<LocalDateTime> getPossibleFlightsDates(String from, String to);
+public interface IFlightService {
 
     List<Flight> getOneWayFlightsByAirportsAndDate(String srcAirport, String dstAirport, String startDate, Integer passengersNum);
 }
