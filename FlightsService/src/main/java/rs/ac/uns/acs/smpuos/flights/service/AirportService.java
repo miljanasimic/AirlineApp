@@ -53,8 +53,4 @@ public class AirportService implements IAirportService{
         return allFlightsDates;
     }
 
-    @Override
-    public List<Flight> getOneWayFlightsByAirportsAndDate(String srcAirport, String dstAirport, String startDate, Integer passengersNum) {
-        return airportRepository.findFlightsByCriteria(srcAirport, dstAirport, startDate, passengersNum);
-    }
 }
