@@ -12,4 +12,6 @@ public interface IUserService{
 
     User login(String email, String password);
 
+    User updateUser (User user);
+
 }

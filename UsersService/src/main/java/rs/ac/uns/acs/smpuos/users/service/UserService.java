@@ -2,11 +2,11 @@ package rs.ac.uns.acs.smpuos.users.service;
 
 
 
-import org.apache.tomcat.util.buf.UEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 import rs.ac.uns.acs.smpuos.users.model.User;
 import rs.ac.uns.acs.smpuos.users.repository.UsersRepository;
 
@@ -45,5 +45,10 @@ public class UserService implements IUserService {
             return null;
 
         return null;
+    }
+
+    @Override
+    public User updateUser(User user) {
+        return usersRepository.save(user);
     }
 }

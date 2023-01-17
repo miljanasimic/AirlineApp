@@ -28,4 +28,8 @@ spring:
           uri: http://users-service
           predicates:
             - Path=/users-service/**
+        - id: reservations-service
+          uri: http://reservations-service
+          predicates:
+            - Path=/reservations-service/**
 
