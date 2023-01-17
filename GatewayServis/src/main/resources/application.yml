@@ -24,4 +24,12 @@ spring:
           uri: http://flights-service
           predicates:
             - Path=/flights-service/**
+        - id: users-service
+          uri: http://users-service
+          predicates:
+            - Path=/users-service/**
+        - id: reservations-service
+          uri: http://reservations-service
+          predicates:
+            - Path=/reservations-service/**
 
