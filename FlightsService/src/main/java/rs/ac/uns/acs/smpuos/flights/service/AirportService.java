@@ -2,18 +2,14 @@ package rs.ac.uns.acs.smpuos.flights.service;
 
 import org.neo4j.driver.Value;
 import org.neo4j.driver.internal.value.ListValue;
-import org.neo4j.driver.internal.value.MapValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.acs.smpuos.flights.model.Airport;
 import rs.ac.uns.acs.smpuos.flights.model.Flight;
 import rs.ac.uns.acs.smpuos.flights.repository.AirportRepository;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -53,8 +49,4 @@ public class AirportService implements IAirportService{
         return allFlightsDates;
     }
 
-    @Override
-    public List<Flight> getOneWayFlightsByAirportsAndDate(String srcAirport, String dstAirport, String startDate, Integer passengersNum) {
-        return airportRepository.findFlightsByCriteria(srcAirport, dstAirport, startDate, passengersNum);
-    }
 }

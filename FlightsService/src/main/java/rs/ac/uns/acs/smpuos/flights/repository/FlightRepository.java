@@ -9,6 +9,7 @@ import rs.ac.uns.acs.smpuos.flights.model.Flight;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 public interface FlightRepository extends Neo4jRepository<Flight, Long> {
@@ -17,4 +18,11 @@ public interface FlightRepository extends Neo4jRepository<Flight, Long> {
             "WHERE date(f.date)=date($flightDate) AND f.seatsRemaining>=$passengersNum\n" +
             "RETURN f as flight")
     List<RelationshipValue> findFlightsByCriteria(String srcAirportCode, String dstAirportCode, String flightDate, Integer passengersNum);
+
+    @Query("MATCH ()-[f:FLIGHT]->() \n" +
+            "WHERE id(f)=$flightId AND f.seatsRemaining-$seatsRemaining>=0\n" +
+            "WITH f is not null as res, f\n" +
+            "SET f.seatsRemaining=f.seatsRemaining-$seatsRemaining\n" +
+            "RETURN res")
+    Boolean findSeatsRemaining(Long flightId, Integer seatsRemaining);
 }
