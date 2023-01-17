@@ -2,6 +2,8 @@ package rs.ac.uns.acs.smpuos.flights.controller;
 
 import org.neo4j.driver.internal.value.RelationshipValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.acs.smpuos.flights.model.Airport;
 import rs.ac.uns.acs.smpuos.flights.model.Flight;
@@ -29,5 +31,14 @@ public class FlightController {
     @GetMapping(value = "/recommendedRoutesFlights")
     public List<Flight> getFlightsByRoutes(@RequestParam List<String> routes, @RequestParam String date, @RequestParam Integer passengerNumber){
         return flightService.findRecommendedFlightsByCriteria(routes, date, passengerNumber);
+    }
+
+    @PatchMapping(value = "/checkAvailability")
+    public @ResponseBody ResponseEntity checkAvailability(@RequestParam Long flightId, @RequestParam Integer passengerNumber){
+        Boolean result = flightService.checkAvailability(flightId, passengerNumber);
+        if (result!=null && result)
+            return new ResponseEntity(HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 }

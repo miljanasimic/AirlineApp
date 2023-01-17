@@ -1,5 +1,6 @@
 package rs.ac.uns.acs.smpuos.users.repository;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import rs.ac.uns.acs.smpuos.users.model.User;
 

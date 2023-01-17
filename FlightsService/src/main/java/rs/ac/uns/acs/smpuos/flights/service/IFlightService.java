@@ -12,5 +12,11 @@ import java.util.Objects;
 
 public interface IFlightService {
 
-    List<Flight> getOneWayFlightsByAirportsAndDate(String srcAirport, String dstAirport, String startDate, Integer passengersNum);
+    List<Flight> getOneWayFlightsByAirportsAndDate(String srcAirport,
+                                                   String dstAirport,
+                                                   String startDate,
+                                                   Integer passengersNum);
+
+    List<Flight> findRecommendedFlightsByCriteria(List<String> routes, String flightDate, Integer passengersNum);
+    Boolean checkAvailability(Long flightId, Integer seatsRemainining);
 }

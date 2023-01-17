@@ -3,6 +3,7 @@ package rs.ac.uns.acs.smpuos.users.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
 @Document
 public class User {
@@ -16,12 +17,15 @@ public class User {
     private String password;
 
     public User(String firstName, String lastName, String phoneNumber, String email, String password) {
-        //this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getFirstName() {
