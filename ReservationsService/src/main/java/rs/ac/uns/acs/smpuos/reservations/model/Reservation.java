@@ -16,9 +16,9 @@ public class Reservation {
     private Integer baggageNumber;
     private Integer passengerNumber;
     private String passengerId;
-    private String flightId;
+    private Long flightId;
 
-    public Reservation(Date date, Integer price, Integer baggagePrice, Integer baggageNumber, Integer passengerNumber, String passengerId, String flightId) {
+    public Reservation(Date date, Integer price, Integer baggagePrice, Integer baggageNumber, Integer passengerNumber, String passengerId, Long flightId) {
         this.date = date;
         this.price = price;
         this.baggagePrice = baggagePrice;
@@ -76,11 +76,11 @@ public class Reservation {
         this.passengerId = passengerId;
     }
 
-    public String getFlightId() {
+    public Long getFlightId() {
         return flightId;
     }
 
-    public void setFlightId(String flightId) {
+    public void setFlightId(Long flightId) {
         this.flightId = flightId;
     }
 

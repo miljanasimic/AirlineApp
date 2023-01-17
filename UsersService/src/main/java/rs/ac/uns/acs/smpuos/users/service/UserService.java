@@ -2,7 +2,9 @@ package rs.ac.uns.acs.smpuos.users.service;
 
 
 
+import com.mongodb.DuplicateKeyException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import rs.ac.uns.acs.smpuos.users.repository.UsersRepository;
 
 import java.util.Optional;
 
+@Lazy
 @Service
 public class UserService implements IUserService {
     @Autowired
@@ -19,18 +22,25 @@ public class UserService implements IUserService {
     @Autowired
     private PasswordEncoder encoder;
 
+    public UserService(){
+
+    }
+
     public Optional<User> findById(String id){
 
         return usersRepository.findById(id);
-    }
-    public void insert(User user){
-        user.setPassword(encoder.encode(user.getPassword()));
-        usersRepository.insert(user);
     }
 
     public Optional<User> findByEmail(String email) {
         return usersRepository.findByEmail(email);
     }
+
+    public void insert(User user){
+        user.setPassword(encoder.encode(user.getPassword()));
+        usersRepository.insert(user);
+    }
+
+
 
     @Override
     public User login(String email, String password) {

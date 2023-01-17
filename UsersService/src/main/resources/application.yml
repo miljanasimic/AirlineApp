@@ -9,6 +9,7 @@ spring:
       uri: "mongodb+srv://mnm:Qu3PJIME3TRZt6Nt@cluster0.wnxgws7.mongodb.net/?retryWrites=true&w=majority"
       database: UsersDatabase
 
+
 eureka:
   client:
     service-url:

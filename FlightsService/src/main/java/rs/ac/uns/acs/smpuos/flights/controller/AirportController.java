@@ -42,12 +42,4 @@ public class AirportController {
         return airportService.getPossibleFlightsDates(srcAirportCode, dstAirportCode);
     }
 
-//    @GetMapping(value = "/oneWayFlightsByCriteria")
-//    public List<Flight> getOneWayFlightsBySearch(@RequestParam String srcAirportCode, @RequestParam String dstAirportCode,
-//                                           @RequestParam String date, @RequestParam Integer passengerNumber){
-//        return airportService.getOneWayFlightsByAirportsAndDate(srcAirportCode, dstAirportCode, date, passengerNumber);
-//    }
-
-
-
 }

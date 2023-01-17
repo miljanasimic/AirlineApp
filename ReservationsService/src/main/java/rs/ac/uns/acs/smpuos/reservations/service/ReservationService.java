@@ -27,7 +27,7 @@ public class ReservationService implements IReservationService{
         return reservationsRepository.findByPassengerId(passengerId);
     }
 
-    public Optional<Reservation> findByFlightId(String flightId){
+    public Optional<Reservation> findByFlightId(Long flightId){
         return reservationsRepository.findByFlightId(flightId);
     }
 }

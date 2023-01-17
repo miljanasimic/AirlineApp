@@ -28,4 +28,12 @@ public interface FlightRepository extends Neo4jRepository<Flight, Long> {
             "WITH f1, a1, a2\n" +
             "RETURN [f1,a1.code,a2.code];")
     List<ListValue> findRecommendedFlightsByCriteria(List<String> routes, String flightDate, Integer passengersNum);
+
+    @Query("MATCH ()-[f:FLIGHT]->() \n" +
+            "WHERE id(f)=$flightId AND f.seatsRemaining-$seatsRemaining>=0\n" +
+            "WITH f is not null as res, f\n" +
+            "SET f.seatsRemaining=f.seatsRemaining-$seatsRemaining\n" +
+            "RETURN res")
+    Boolean findSeatsRemaining(Long flightId, Integer seatsRemaining);
+
 }

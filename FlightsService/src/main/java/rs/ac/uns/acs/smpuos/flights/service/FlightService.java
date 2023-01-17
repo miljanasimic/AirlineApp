@@ -1,6 +1,5 @@
 package rs.ac.uns.acs.smpuos.flights.service;
 
-import org.neo4j.driver.Value;
 import org.neo4j.driver.internal.value.ListValue;
 import org.neo4j.driver.internal.value.RelationshipValue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +58,9 @@ public class FlightService implements IFlightService{
             throw new RuntimeException(e);
         }
     }
+
+    public Boolean checkAvailability(Long flightId, Integer seatsRemainining) {;
+        return flightRepository.findSeatsRemaining(flightId, seatsRemainining);
+    }
+
 }

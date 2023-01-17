@@ -12,6 +12,7 @@ import rs.ac.uns.acs.smpuos.users.service.IUserService;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private IUserService userService;
@@ -27,18 +28,29 @@ public class UserController {
 
     //registracija
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void addUser(@RequestBody User user) {
-        userService.insert(user);
+    public String addUser(@RequestBody User user) {
+        String result = null;
+        Optional<User> userData = userService.findByEmail(user.getEmail());
+        if (userData.isPresent()) {
+            result = "Nalog za email: " + user.getEmail() + " postoji.";
+        } else {
+            userService.insert(user);
+            result = "Korisnik uspesno tegistrovan.";
+        }
+        return result;
     }
 
     //prijavljivanje
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody UserLogDetails user){
+    public ResponseEntity<UserLoginResult> login(@RequestBody UserLogDetails user){
         User user1 = userService.login(user.email, user.password);
+
         if (user1!=null){
-            return new ResponseEntity<>(user1, HttpStatus.OK);
+            UserLoginResult user2 = new UserLoginResult(user1.getId(), user1.getEmail());
+            return new ResponseEntity<>(user2, HttpStatus.OK);
+
         } else {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(null,HttpStatus.FORBIDDEN);
         }
     }
 
@@ -94,6 +106,32 @@ public class UserController {
 
         public void setPassword(String password) {
             this.password = password;
+        }
+    }
+
+    public static class UserLoginResult {
+        private String id;
+        private String email;
+
+        public UserLoginResult(String id, String email) {
+            this.id = id;
+            this.email = email;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
         }
     }
 }
