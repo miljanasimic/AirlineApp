@@ -16,5 +16,4 @@ public interface IAirportService {
 
     List<LocalDateTime> getPossibleFlightsDates(String from, String to);
 
-    List<Flight> getOneWayFlightsByAirportsAndDate(String srcAirport, String dstAirport, String startDate, Integer passengersNum);
 }
