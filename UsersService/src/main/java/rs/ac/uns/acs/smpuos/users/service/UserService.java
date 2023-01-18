@@ -14,7 +14,6 @@ import rs.ac.uns.acs.smpuos.users.repository.UsersRepository;
 
 import java.util.Optional;
 
-@Lazy
 @Service
 public class UserService implements IUserService {
     @Autowired

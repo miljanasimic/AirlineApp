@@ -1,5 +1,6 @@
 package rs.ac.uns.acs.smpuos.flights.service;
 
+import org.neo4j.driver.internal.value.BooleanValue;
 import org.neo4j.driver.internal.value.ListValue;
 import org.neo4j.driver.internal.value.RelationshipValue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,8 +60,18 @@ public class FlightService implements IFlightService{
         }
     }
 
-    public Boolean checkAvailability(Long flightId, Integer seatsRemainining) {;
-        return flightRepository.findSeatsRemaining(flightId, seatsRemainining);
+    public Boolean checkAvailability(Long flightId, Integer seatsRemaining) {;
+        return flightRepository.findSeatsRemaining(flightId, seatsRemaining);
+
     }
 
+    @Override
+    public Boolean returnTicket(Long flightId, Integer seatsRemaining) {
+        Boolean result = flightRepository.getSeatsRemaining(flightId,seatsRemaining);
+        if (result!=null){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

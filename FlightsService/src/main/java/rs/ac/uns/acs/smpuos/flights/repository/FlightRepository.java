@@ -1,7 +1,9 @@
 package rs.ac.uns.acs.smpuos.flights.repository;
 
+import org.neo4j.driver.internal.value.BooleanValue;
 import org.neo4j.driver.internal.value.ListValue;
 import org.neo4j.driver.internal.value.RelationshipValue;
+import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import rs.ac.uns.acs.smpuos.flights.model.Airport;
@@ -35,5 +37,11 @@ public interface FlightRepository extends Neo4jRepository<Flight, Long> {
             "SET f.seatsRemaining=f.seatsRemaining-$seatsRemaining\n" +
             "RETURN res")
     Boolean findSeatsRemaining(Long flightId, Integer seatsRemaining);
+
+    @Query("MATCH ()-[f:FLIGHT]->() \n" +
+            "WHERE id(f)=$flightId\n" +
+            "SET f.seatsRemaining=f.seatsRemaining+$seatsRemaining\n" +
+            "RETURN f is not null")
+    Boolean getSeatsRemaining(Long flightId, Integer seatsRemaining);
 
 }

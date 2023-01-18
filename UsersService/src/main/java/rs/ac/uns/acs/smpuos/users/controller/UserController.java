@@ -28,16 +28,14 @@ public class UserController {
 
     //registracija
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String addUser(@RequestBody User user) {
-        String result = null;
+    public ResponseEntity<String> addUser(@RequestBody User user) {
         Optional<User> userData = userService.findByEmail(user.getEmail());
         if (userData.isPresent()) {
-            result = "Nalog za email: " + user.getEmail() + " postoji.";
+            return new ResponseEntity<>("Nalog za email: " + user.getEmail() + " postoji.", HttpStatus.FORBIDDEN);
         } else {
             userService.insert(user);
-            result = "Korisnik uspesno tegistrovan.";
+            return new ResponseEntity<>("Registracija je uspjesna.", HttpStatus.OK);
         }
-        return result;
     }
 
     //prijavljivanje
@@ -55,7 +53,7 @@ public class UserController {
     }
 
     //izmena-profila
-    @PutMapping("/users/update")
+    @PutMapping("/update")
     public ResponseEntity<User> updateUser(@RequestParam("id") String id, @RequestBody User User) {
         Optional<User> UserData = userService.findById(id);
         if (UserData.isPresent()) {
@@ -75,7 +73,7 @@ public class UserController {
             if ((User.getPassword())!=null) {
                 user1.setPassword(encoder.encode(User.getPassword()));
             }
-            return new ResponseEntity(userService.updateUser(user1), HttpStatus.OK);
+            return new ResponseEntity<>(userService.updateUser(user1), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
