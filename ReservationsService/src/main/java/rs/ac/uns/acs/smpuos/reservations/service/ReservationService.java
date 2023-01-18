@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import rs.ac.uns.acs.smpuos.reservations.model.Reservation;
 import rs.ac.uns.acs.smpuos.reservations.repository.ReservationsRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,13 +18,17 @@ public class ReservationService implements IReservationService{
         reservationsRepository.insert(reservation);
     }
 
+    public Optional<Reservation> findById(String id){
 
-    public Optional<Reservation> deleteById(String id) {
-        reservationsRepository.deleteById(id);
-        return null;
+        return reservationsRepository.findById(id);
     }
 
-    public Optional<Reservation> findByPassengerId(String passengerId){
+
+    public void deleteById(String id) {
+        reservationsRepository.deleteById(id);
+    }
+
+    public List<Reservation> findByPassengerId(String passengerId){
         return reservationsRepository.findByPassengerId(passengerId);
     }
 

@@ -37,8 +37,19 @@ public class FlightController {
     public @ResponseBody ResponseEntity checkAvailability(@RequestParam Long flightId, @RequestParam Integer passengerNumber){
         Boolean result = flightService.checkAvailability(flightId, passengerNumber);
         if (result!=null && result)
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
 
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @PatchMapping(value = "/returnTicket")
+    public @ResponseBody ResponseEntity returnTicket (@RequestParam Long flightId, @RequestParam Integer passengerNumber){
+        Boolean result = flightService.returnTicket(flightId, passengerNumber);
+        if (result=true) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
     }
 }

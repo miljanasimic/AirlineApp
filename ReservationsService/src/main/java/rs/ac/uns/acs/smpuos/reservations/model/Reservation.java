@@ -28,6 +28,10 @@ public class Reservation {
         this.flightId = flightId;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public Date getDate() {
         return date;
     }

@@ -18,5 +18,7 @@ public interface IFlightService {
                                                    Integer passengersNum);
 
     List<Flight> findRecommendedFlightsByCriteria(List<String> routes, String flightDate, Integer passengersNum);
-    Boolean checkAvailability(Long flightId, Integer seatsRemainining);
+    Boolean checkAvailability(Long flightId, Integer seatsRemaining);
+
+    Boolean returnTicket(Long flightId, Integer seatsRemaining);
 }

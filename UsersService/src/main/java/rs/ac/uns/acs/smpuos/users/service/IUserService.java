@@ -6,7 +6,6 @@ import rs.ac.uns.acs.smpuos.users.model.User;
 
 import java.util.Optional;
 
-@Lazy
 @Service
 public interface IUserService{
     Optional<User> findById(String id);
