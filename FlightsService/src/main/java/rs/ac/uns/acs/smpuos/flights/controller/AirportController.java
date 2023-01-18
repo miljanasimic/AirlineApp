@@ -38,7 +38,7 @@ public class AirportController {
     }
 
     @GetMapping(value = "/allPossibleFlightsDates")
-    public List<LocalDateTime> getFlightsDates(@RequestParam String srcAirportCode, @RequestParam String dstAirportCode){
+    public List<String> getFlightsDates(@RequestParam String srcAirportCode, @RequestParam String dstAirportCode){
         return airportService.getPossibleFlightsDates(srcAirportCode, dstAirportCode);
     }
 

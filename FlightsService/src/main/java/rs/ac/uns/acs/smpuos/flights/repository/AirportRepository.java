@@ -1,6 +1,7 @@
 package rs.ac.uns.acs.smpuos.flights.repository;
 
 import org.neo4j.driver.internal.value.DateTimeValue;
+import org.neo4j.driver.internal.value.DateValue;
 import org.neo4j.driver.internal.value.ListValue;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
@@ -24,9 +25,9 @@ public interface AirportRepository extends Neo4jRepository<Airport, String> {
     List<Airport> findDirectAirports(String startAirportCode);
 
     @Query("MATCH (src:Airport)-[f:FLIGHT]->(dst:Airport)\n" +
-            "WHERE src.code=$srcAirportCode AND dst.code=$dstAirportCode\n" +
-            "WITH f.date as date\n" +
-            "RETURN collect({year:date.year,month:date.month,day:date.day,hour:date.hour, minute:date.minute}) as dates")
-    List<ListValue> findPossibleFlightsDates(String srcAirportCode, String dstAirportCode);
+            "WHERE src.code=$srcAirportCode AND dst.code=$dstAirportCode AND f.seatsRemaining>0\n" +
+            "WITH date(f.date) as date\n" +
+            "RETURN DISTINCT toString(date)")
+    List<String> findPossibleFlightsDates(String srcAirportCode, String dstAirportCode);
 
 }

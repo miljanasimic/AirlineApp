@@ -14,7 +14,7 @@ public interface IAirportService {
 
     List<Airport> getDirectAirports(String fromAirport);
 
-    List<LocalDateTime> getPossibleFlightsDates(String from, String to);
+    List<String> getPossibleFlightsDates(String from, String to);
 
 
 }
