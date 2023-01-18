@@ -18,18 +18,18 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) {}
 
     registerUser(userData: FormData) {
-        console.log(userData.get('email'), userData.get('password'))
-        return this.http.post<any>("http://localhost:9000/users-service/register", {
+        console.log(userData.get('email'), userData.get('password'),userData.get('firstName'), userData.get('lastName'),userData.get('phoneNum'))
+        return this.http.post<any>("http://localhost:9000/users-service/user/register", {
             email: userData.get('email'),
             password: userData.get('password'),
             firstName: userData.get('firstName'),
             lastName: userData.get('lastName'),
-            phoneNumber: userData.get('phoneNumber'),
+            phoneNumber: userData.get('phoneNum'),
         })
     }
 
     login(email: string, password: string) {
-        return this.http.post<LoginData>('http://localhost:9000/users-service/login', {
+        return this.http.post<LoginData>('http://localhost:9000/users-service/user/login', {
             email: email,
             password: password
         })
@@ -47,4 +47,16 @@ export class AuthService {
         this.router.navigate(['/prijavljivanje']);
         localStorage.removeItem('logged-user');
     }
+
+    autoLogin() {
+        const loggedUser: {
+          id: string;
+          email: string } = JSON.parse(localStorage.getItem('logged-user'));
+        if (!loggedUser) {
+          return;
+        }
+    
+        let user = new User(loggedUser.id, loggedUser.email);    
+        this.user.next(user);
+      }
 }

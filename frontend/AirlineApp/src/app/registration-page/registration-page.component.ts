@@ -38,7 +38,7 @@ export class RegistrationPageComponent implements OnInit{
     const firstName = this.form.get('firstName').value;
     data.append('firstName', firstName);
     const lastName = this.form.get('lastName').value;
-    data.append('prezime', lastName);
+    data.append('lastName', lastName);
     const email = this.form.get('email').value;
     data.append('email', email);
     const password = this.form.get('password').value;
@@ -48,19 +48,22 @@ export class RegistrationPageComponent implements OnInit{
 
     this.authService.registerUser(data).subscribe({
       next : resp =>{
+        console.log(resp)
         this.success="Uspesno ste se registrovali, možete se prijaviti na aplikaciju";
         setTimeout(() => {
           this.router.navigate(['prijavljivanje']);
         }, 3000);
       },
       error : err =>{
+        console.log(err)
         this.error = err.error.sadrzaj;
         setTimeout(() => {
           this.error = '';
         }, 3000);
       }
 
-    });
+    }
+    );
 
 
    

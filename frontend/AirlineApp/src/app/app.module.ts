@@ -17,6 +17,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule} from '@angular/material/select';
+import { FlightsPageComponent } from './flights-page/flights-page.component';
+import { RecommendationPageComponent } from './recommendation-page/recommendation-page.component';
+import { ReservationsPageComponent } from './reservations-page/reservations-page.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -25,7 +35,12 @@ import { LoginPageComponent } from './login-page/login-page.component';
     HeaderComponent,
     HomePageComponent,
     RegistrationPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ProfilePageComponent,
+    SpinnerComponent,
+    FlightsPageComponent,
+    RecommendationPageComponent,
+    ReservationsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +52,12 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

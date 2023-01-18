@@ -1,0 +1,80 @@
+<app-spinner *ngIf="!this.user" class="spinner"></app-spinner>
+<div class="edit-profile d-flex align-items-center justify-content-center m-4" *ngIf="this.user">
+    <mat-card class="d-flex flex-row flex-wrap m-4">
+      <form class="py-3 px-2 d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class=" d-flex flex-column flex-wrap align-items-center ">
+            <mat-form-field class="p-2 field-width" appearance="outline">
+              <mat-label>Ime</mat-label>
+              <input
+              matInput
+              type="text"
+              id="firstName"
+              name="firstName"
+              formControlName="firstName"
+              >
+              <mat-error *ngIf="form.get('firstName').invalid">Molimo Vas da unesete Vaše ime</mat-error>
+  
+            </mat-form-field>
+            <mat-form-field class="p-2 field-width"appearance="outline">
+              <mat-label>Prezime</mat-label>
+              <input
+              matInput
+              type="text"
+              id="lastName"
+              name="lastName"
+              formControlName="lastName"
+              >
+              <mat-error *ngIf="form.get('lastName').invalid">Molimo Vas da unesete Vaše prezime</mat-error>
+            </mat-form-field>
+
+          <mat-form-field class="p-2 field-width" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input
+            [readonly]="this.rdonly"
+            matInput
+            id="email"
+            name="email"
+            formControlName="email"
+            >
+          </mat-form-field>
+
+          <mat-form-field class="p-2 field-width" appearance="outline">
+            <mat-label>Telefon</mat-label>
+            <input
+            matInput
+            id="phoneNumber"
+            name="phoneNumber"
+            formControlName="phoneNumber"
+            >
+          </mat-form-field>
+
+        <mat-expansion-panel [expanded]="false" class="field-width p-2">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="text-center"> Promena lozinke </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field  appearance="outline" >
+            <mat-label>Nova lozinka</mat-label>
+            <input
+            matInput
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              formControlName="newPassword"
+            />
+          </mat-form-field>
+        </mat-expansion-panel>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-outline-primary mt-3 me-3 btn-edit-page" type="submit"
+          [disabled]="form.get('firstName').invalid || form.get('lastName').invalid || form.get('newPassword').invalid">Sačuvaj</button>
+          <button class="btn btn-outline-primary mt-3 ms-3 btn-edit-page" (click)="onCancel()" [disabled]="">Otkaži</button>
+        </div>
+        </div>
+      </form>
+      <div class="alert alert-success text-center ml-auto mt-3" *ngIf="success">
+        {{ success }}
+      </div>
+      <div class="alert alert-danger text-center ml-auto mt-3" *ngIf="error">
+        {{ error }}
+      </div>
+    </mat-card>
+  </div>
