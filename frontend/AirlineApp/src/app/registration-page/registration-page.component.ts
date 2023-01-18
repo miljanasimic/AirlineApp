@@ -62,8 +62,7 @@ export class RegistrationPageComponent implements OnInit{
         }, 3000);
       }
 
-    }
-    );
+    });
 
 
    

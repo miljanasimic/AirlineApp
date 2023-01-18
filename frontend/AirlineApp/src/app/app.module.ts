@@ -27,6 +27,7 @@ import { ReservationsPageComponent } from './reservations-page/reservations-page
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FlightCardComponent } from './flight-card/flight-card.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FlightsPageComponent,
     RecommendationPageComponent,
     ReservationsPageComponent,
+    FlightCardComponent,
   ],
   imports: [
     BrowserModule,

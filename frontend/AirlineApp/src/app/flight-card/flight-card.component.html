@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title><span>Od </span> <span class="b">{{flight.srcCode}}</span><span> do</span><span class="b"> {{flight.dstCode}}</span></mat-card-title>
+        <mat-card-subtitle>{{flight.date}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+            <div class="col-10">
+                Cena leta bez prtljaga {{flight.price}}
+            </div>
+            <div class="d-flex flex-row">
+                <div class="col-10">
+                    {{flight.seatsRemaining}} preostala mesta
+                </div>
+                <div class="col-2">
+                    Cena prtljaga {{flight.baggage}}
+                </div>
+            </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button class="btn btn-primary" >Rezervisi let</button>
+    </mat-card-actions>
+
+</mat-card>

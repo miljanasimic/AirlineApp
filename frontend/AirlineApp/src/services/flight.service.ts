@@ -34,5 +34,13 @@ export class FlightService {
             return responseDate;
         }))
     }
+
+    getFlightsBySearch(src: string, dst: string, date: string, passNum: string) {
+        return this.http.get<any>('http://localhost:9000/flights-service/flight/oneWayFlightsByCriteria?srcAirportCode='
+        +src+'&dstAirportCode='+dst+'&date='+date+'&passengerNumber='+passNum)
+        .pipe(map(responseDate => {
+            return responseDate;
+        }))
+    }
     
 }
